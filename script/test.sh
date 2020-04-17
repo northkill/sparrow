@@ -8,6 +8,8 @@ set_path
 cd ../build
 
 cmake --build . --target sparrow-coverage
-xdg-open ../coverage/index.html
+if [ $? -eq 0 ]; then
+    xdg-open ../coverage/index.html
+fi
 
 reset_path
