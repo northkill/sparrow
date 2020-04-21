@@ -6,8 +6,8 @@ FIND_PACKAGE (Boost 1.72 REQUIRED COMPONENTS serialization)
 
 ADD_LIBRARY (
     sparrow
-    "./src/sparrow.cpp"
     "./src/tile.cpp"
+    "./src/hand.cpp"
 )
 
 TARGET_LINK_LIBRARIES (
@@ -31,6 +31,7 @@ IF (SPARROW_ENABLE_TEST)
     FIND_PACKAGE (Boost 1.72 REQUIRED COMPONENTS unit_test_framework)
     ADD_EXECUTABLE (
         sparrow-test
+        "./test/hand_test.cpp"
         "./test/strong_typedef_test.cpp"
         "./test/test.cpp"
         "./test/tile_test.cpp"

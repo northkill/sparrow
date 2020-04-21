@@ -21,13 +21,36 @@ tile& tile::operator = (tile const& other) noexcept
 
 auto operator == (tile const& a, tile const& b) noexcept -> bool
 {
-    return a.m_type == b.m_type
-            and a.m_value == b.m_value;
+    return a.m_type == b.m_type and a.m_value == b.m_value;
 }
 
 auto operator != (tile const& a, tile const& b) noexcept -> bool
 {
-    return not (a == b);
+    return not (operator == (a, b));
+}
+
+auto operator < (tile const& a, tile const& b) noexcept -> bool
+{
+    if (a.m_type != b.m_type)
+        return a.m_type < b.m_type;
+    return a.m_value < b.m_value;
+}
+
+auto operator >= (tile const& a, tile const& b) noexcept -> bool
+{
+    return not operator < (a, b);
+}
+
+auto operator > (tile const& a, tile const& b) noexcept -> bool
+{
+    if (a.m_type != b.m_type)
+        return a.m_type > b.m_type;
+    return a.m_value > b.m_value;
+}
+
+auto operator <= (tile const& a, tile const& b) noexcept -> bool
+{
+    return not operator > (a, b);
 }
 
 }

@@ -10,11 +10,14 @@ class data {
 public:
     using value_type = T;
 
-    friend auto operator == (data const& a, data const& b) -> bool
+    friend auto operator == (data const& a, data const& b) noexcept -> bool
     { return a.m_value == b.m_value; }
 
-    friend auto operator != (data const& a, data const& b) -> bool
-    { return not (a == b); }
+    friend auto operator < (data const& a, data const& b) noexcept -> bool
+    { return a.m_value < b.m_value; }
+
+    friend auto operator > (data const& a, data const& b) noexcept -> bool
+    { return a.m_value > b.m_value; }
 
     explicit data(value_type const& value) noexcept
         : m_value(value)
@@ -33,6 +36,18 @@ public:
 private:
     value_type m_value;
 };
+
+template < typename E, E EV, typename T >
+auto operator != (data<E, EV, T> const& a, data<E, EV, T> const& b) noexcept -> bool
+{ return not operator == (a, b); }
+
+template < typename E, E EV, typename T >
+auto operator >= (data<E, EV, T> const& a, data<E, EV, T> const& b) noexcept -> bool
+{ return not operator < (a, b); }
+
+template < typename E, E EV, typename T >
+auto operator <= (data<E, EV, T> const& a, data<E, EV, T> const& b) noexcept -> bool
+{ return not operator > (a, b); }
 
 }
 

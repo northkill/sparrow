@@ -21,7 +21,8 @@ using tile_value_type = util::data<
 class tile {
 public:
     friend auto operator == (tile const& a, tile const& b) noexcept -> bool;
-    friend auto operator != (tile const& a, tile const& b) noexcept -> bool;
+    friend auto operator < (tile const& a, tile const& b) noexcept -> bool;
+    friend auto operator > (tile const& a, tile const& b) noexcept -> bool;
 
     tile(tile_type_type const type, tile_value_type const value) noexcept;
     tile(tile const& other) noexcept;
@@ -34,6 +35,10 @@ private:
 
 auto operator == (tile const& a, tile const& b) noexcept -> bool;
 auto operator != (tile const& a, tile const& b) noexcept -> bool;
+auto operator < (tile const& a, tile const& b) noexcept -> bool;
+auto operator >= (tile const& a, tile const& b) noexcept -> bool;
+auto operator > (tile const& a, tile const& b) noexcept -> bool;
+auto operator <= (tile const& a, tile const& b) noexcept -> bool;
 
 }
 
