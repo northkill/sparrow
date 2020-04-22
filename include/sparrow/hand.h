@@ -9,12 +9,6 @@
 
 namespace nk::sparrow {
 
-template < typename T >
-struct pool_allocator {
-public:
-    using value_type = T;
-};
-
 class hand {
 public:
     using tiles_type = std::list< tile >;
