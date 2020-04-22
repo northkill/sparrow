@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE (sparrow_hand_add_tiles)
 
     spr::hand hand;
     for (auto const& tile : tiles)
-        hand.push_tile(tile);
+        hand.push(tile);
 
     BOOST_CHECK_EQUAL(hand.size(), 2);
 
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE (sparrow_hand_sorted_add_tiles)
 
     spr::hand hand;
     for (auto const& tile : input_tiles)
-        hand.push_tile(tile);
+        hand.push(tile);
 
     auto i = hand.begin();
     for (std::size_t j = 0; j < expected_tiles.size(); j += 1, ++i)
@@ -78,9 +78,9 @@ BOOST_AUTO_TEST_CASE (sparrow_pop_tile_by_value)
     spr::tile const target_tile(spr::tile_type_type(0), spr::tile_value_type(2));
     spr::hand hand;
     for (auto const& tile : input_tiles)
-        hand.push_tile(tile);
+        hand.push(tile);
 
-    hand.pop_tile(target_tile);
+    hand.pop(target_tile);
 
     auto i = hand.cbegin();
     for (std::size_t j = 0; j < expected_tiles.size(); j += 1, ++i)
@@ -105,12 +105,12 @@ BOOST_AUTO_TEST_CASE (sparrow_pop_tile_by_iterator)
     spr::tile const target_tile(spr::tile_type_type(0), spr::tile_value_type(2));
     spr::hand hand;
     for (auto const& tile : input_tiles)
-        hand.push_tile(tile);
+        hand.push(tile);
 
     auto const lb = std::lower_bound(hand.cbegin(), hand.cend(), target_tile);
     BOOST_REQUIRE_EQUAL(lb != hand.cend(), true);
     BOOST_REQUIRE_EQUAL(*lb == target_tile, true);
-    hand.pop_tile(lb);
+    hand.pop(lb);
 
     auto i = hand.cbegin();
     for (std::size_t j = 0; j < expected_tiles.size(); j += 1, ++i)

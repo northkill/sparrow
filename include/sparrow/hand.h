@@ -24,9 +24,9 @@ public:
 
     hand(void);
 
-    auto push_tile(tile const tile) -> void;
-    auto pop_tile(const_iterator const iterator) -> void;
-    auto pop_tile(tile const tile) -> void;
+    auto push(tile const tile) -> void;
+    auto pop(const_iterator const iterator) -> void;
+    auto pop(tile const tile) -> void;
 
     auto begin(void) noexcept -> iterator;
     auto begin(void) const noexcept -> const_iterator;

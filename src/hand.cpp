@@ -8,18 +8,18 @@ hand::hand(void)
     : m_tiles()
 { }
 
-auto hand::push_tile(tile const tile) -> void
+auto hand::push(tile const tile) -> void
 {
     auto const lb = std::lower_bound(m_tiles.cbegin(), m_tiles.cend(), tile);
     m_tiles.emplace(lb, tile);
 }
 
-auto hand::pop_tile(const_iterator const iterator) -> void
+auto hand::pop(const_iterator const iterator) -> void
 {
     m_tiles.erase(iterator);
 }
 
-auto hand::pop_tile(tile const tile) -> void
+auto hand::pop(tile const tile) -> void
 {
     auto const lb = std::lower_bound(m_tiles.cbegin(), m_tiles.cend(), tile);
     if (lb != m_tiles.cend() and *lb == tile)
