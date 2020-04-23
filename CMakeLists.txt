@@ -32,7 +32,6 @@ IF (SPARROW_ENABLE_TEST)
     ADD_EXECUTABLE (
         sparrow-test
         "./test/hand_test.cpp"
-        "./test/strong_typedef_test.cpp"
         "./test/test.cpp"
         "./test/tile_test.cpp"
     )

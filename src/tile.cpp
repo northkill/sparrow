@@ -2,7 +2,7 @@
 
 namespace nk::sparrow {
 
-tile::tile(tile_type_type const type, tile_value_type const value) noexcept
+tile::tile(unsigned int const type, unsigned int const value) noexcept
     : m_type(type)
     , m_value(value)
 { }

@@ -2,8 +2,6 @@
 #define __NK_SPARROW_HAND_H__
 
 #include <list>
-#include <memory>
-#include <optional>
 
 #include "./tile.h"
 

@@ -16,8 +16,9 @@ BOOST_AUTO_TEST_CASE (sparrow_hand_default_construct)
 BOOST_AUTO_TEST_CASE (sparrow_hand_add_tiles)
 {
     std::vector< spr::tile > const tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(2)), };
+        spr::tile(0, 1),
+        spr::tile(0, 2),
+    };
 
     spr::hand hand;
     for (auto const& tile : tiles)
@@ -34,19 +35,19 @@ BOOST_AUTO_TEST_CASE (sparrow_hand_add_tiles)
 BOOST_AUTO_TEST_CASE (sparrow_hand_sorted_add_tiles)
 {
     std::vector< spr::tile > const input_tiles {
-        spr::tile(spr::tile_type_type(3), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(5)),
-        spr::tile(spr::tile_type_type(1), spr::tile_value_type(0)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(2)),
-        spr::tile(spr::tile_type_type(1), spr::tile_value_type(0)),
+        spr::tile(3, 1),
+        spr::tile(0, 5),
+        spr::tile(1, 0),
+        spr::tile(0, 2),
+        spr::tile(1, 0),
     };
 
     std::vector< spr::tile > const expected_tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(2)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(5)),
-        spr::tile(spr::tile_type_type(1), spr::tile_value_type(0)),
-        spr::tile(spr::tile_type_type(1), spr::tile_value_type(0)),
-        spr::tile(spr::tile_type_type(3), spr::tile_value_type(1)),
+        spr::tile(0, 2),
+        spr::tile(0, 5),
+        spr::tile(1, 0),
+        spr::tile(1, 0),
+        spr::tile(3, 1),
     };
 
     BOOST_REQUIRE_EQUAL(input_tiles.size(), expected_tiles.size());
@@ -63,19 +64,19 @@ BOOST_AUTO_TEST_CASE (sparrow_hand_sorted_add_tiles)
 BOOST_AUTO_TEST_CASE (sparrow_pop_tile_by_value)
 {
     std::vector< spr::tile > const input_tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(2)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(3)),
+        spr::tile(0, 1),
+        spr::tile(0, 2),
+        spr::tile(0, 3),
     };
 
     std::vector< spr::tile > const expected_tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(3)),
+        spr::tile(0, 1),
+        spr::tile(0, 3),
     };
 
     BOOST_REQUIRE_EQUAL(input_tiles.size() - 1, expected_tiles.size());
 
-    spr::tile const target_tile(spr::tile_type_type(0), spr::tile_value_type(2));
+    spr::tile const target_tile(0, 2);
     spr::hand hand;
     for (auto const& tile : input_tiles)
         hand.push(tile);
@@ -90,19 +91,19 @@ BOOST_AUTO_TEST_CASE (sparrow_pop_tile_by_value)
 BOOST_AUTO_TEST_CASE (sparrow_pop_tile_by_iterator)
 {
     std::vector< spr::tile > const input_tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(2)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(3)),
+        spr::tile(0, 1),
+        spr::tile(0, 2),
+        spr::tile(0, 3),
     };
 
     std::vector< spr::tile > const expected_tiles {
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(1)),
-        spr::tile(spr::tile_type_type(0), spr::tile_value_type(3)),
+        spr::tile(0, 1),
+        spr::tile(0, 3),
     };
 
     BOOST_REQUIRE_EQUAL(input_tiles.size() - 1, expected_tiles.size());
 
-    spr::tile const target_tile(spr::tile_type_type(0), spr::tile_value_type(2));
+    spr::tile const target_tile(0, 2);
     spr::hand hand;
     for (auto const& tile : input_tiles)
         hand.push(tile);
