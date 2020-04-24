@@ -1,77 +1,81 @@
 #include <boost/test/unit_test.hpp>
-#include <sparrow/tile.h>
+#include <sparrow/tile.hpp>
+
+#include "./test_tileset.h"
 
 namespace spr = nk::sparrow;
+using tileset = spr::test::tileset;
+using tile = spr::tile< tileset >;
 
 BOOST_AUTO_TEST_SUITE (sparrow_tile_test_suite)
 
-BOOST_AUTO_TEST_CASE (equal_type_equal_value_equal)
+BOOST_AUTO_TEST_CASE (equal_suit_equal_value_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(1, 1);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::a::one);
     BOOST_CHECK_EQUAL(tile_1 == tile_2, true);
 }
 
-BOOST_AUTO_TEST_CASE (equal_type_equal_value_not_equal)
+BOOST_AUTO_TEST_CASE (equal_suit_equal_value_not_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(1, 1);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::a::one);
     BOOST_CHECK_EQUAL(tile_1 != tile_2, false);
 }
 
-BOOST_AUTO_TEST_CASE (not_equal_type_equal_value_equal)
+BOOST_AUTO_TEST_CASE (not_equal_suit_equal_value_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(2, 1);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::b::one);
     BOOST_CHECK_EQUAL(tile_1 == tile_2, false);
 }
 
-BOOST_AUTO_TEST_CASE (not_equal_type_equal_value_not_equal)
+BOOST_AUTO_TEST_CASE (not_equal_suit_equal_value_not_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(2, 1);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::b::one);
     BOOST_CHECK_EQUAL(tile_1 != tile_2, true);
 }
 
-BOOST_AUTO_TEST_CASE (equal_type_not_equal_value_equal)
+BOOST_AUTO_TEST_CASE (equal_suit_not_equal_value_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(1, 2);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::a::two);
     BOOST_CHECK_EQUAL(tile_1 == tile_2, false);
 }
 
-BOOST_AUTO_TEST_CASE (equal_type_not_equal_value_not_equal)
+BOOST_AUTO_TEST_CASE (equal_suit_not_equal_value_not_equal)
 {
-    spr::tile tile_1(1, 1);
-    spr::tile tile_2(1, 2);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::a::two);
     BOOST_CHECK_EQUAL(tile_1 != tile_2, true);
 }
 
-BOOST_AUTO_TEST_CASE (not_equal_type_not_equal_value_equal)
+BOOST_AUTO_TEST_CASE (not_equal_suit_not_equal_value_equal)
 {
-    spr::tile tile_1(1, 2);
-    spr::tile tile_2(2, 4);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::b::two);
     BOOST_CHECK_EQUAL(tile_1 == tile_2, false);
 }
 
-BOOST_AUTO_TEST_CASE (not_equal_type_not_equal_value_not_equal)
+BOOST_AUTO_TEST_CASE (not_equal_suit_not_equal_value_not_equal)
 {
-    spr::tile tile_1(1, 2);
-    spr::tile tile_2(2, 4);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::b::two);
     BOOST_CHECK_EQUAL(tile_1 != tile_2, true);
 }
 
 BOOST_AUTO_TEST_CASE (copy)
 {
-    spr::tile tile_1(3, 4);
-    spr::tile tile_2(tile_1);
+    tile tile_1(tileset::b::two);
+    tile tile_2(tileset::b::two);
     BOOST_CHECK_EQUAL(tile_1 == tile_2, true);
 }
 
 BOOST_AUTO_TEST_CASE (assignment)
 {
-    spr::tile tile_1(1, 2);
-    spr::tile tile_2(3, 4);
+    tile tile_1(tileset::a::one);
+    tile tile_2(tileset::b::two);
     tile_2 = tile_1;
     BOOST_CHECK_EQUAL(tile_1 == tile_2, true);
 }

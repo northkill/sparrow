@@ -6,8 +6,7 @@ FIND_PACKAGE (Boost 1.72 REQUIRED COMPONENTS serialization)
 
 ADD_LIBRARY (
     sparrow
-    "./src/tile.cpp"
-    "./src/hand.cpp"
+    "./src/sparrow.cpp"
 )
 
 TARGET_LINK_LIBRARIES (
