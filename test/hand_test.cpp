@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <vector>
 
 #include <boost/test/unit_test.hpp>
 #include <sparrow/hand.hpp>
@@ -8,7 +9,7 @@
 namespace spr = nk::sparrow;
 using tileset = spr::test::tileset;
 using tile = spr::tile< tileset >;
-using hand = spr::hand< tileset >;
+using hand = spr::hand< tileset, std::vector >;
 
 BOOST_AUTO_TEST_SUITE (sparrow_hand_test_suite)
 

@@ -1,18 +1,15 @@
 #ifndef __NK_SPARROW_HAND_HPP__
 #define __NK_SPARROW_HAND_HPP__
 
-#include <list>
-
 #include "./tile.hpp"
 
 namespace nk::sparrow {
 
-template < typename Tileset >
+template < typename Tileset, template < typename ... Args > typename Container >
 class hand {
 public:
+    using tiles_type = Container< tile_cref< Tileset >>;
     using tile_type = tile< Tileset >;
-    using tiles_type = std::list< tile_cref< Tileset >>;
-    using size_type = typename tiles_type::size_type;
     using iterator = typename tiles_type::iterator;
     using const_iterator = typename tiles_type::const_iterator;
 
@@ -20,55 +17,55 @@ public:
         m_tiles()
     { }
 
-    auto push(tile_type const& tile) -> void
+    auto push(tile_type const& tile)
     {
         auto const lb = std::lower_bound(m_tiles.cbegin(), m_tiles.cend(), tile);
         m_tiles.emplace(lb, tile);
     }
 
-    auto pop(const_iterator const iterator) -> void
+    auto pop(const_iterator const iterator)
     {
         m_tiles.erase(iterator);
     }
 
-    auto pop(tile_type const& tile) -> void
+    auto pop(tile_type const& tile)
     {
         auto const lb = std::lower_bound(m_tiles.cbegin(), m_tiles.cend(), tile);
         if (lb != m_tiles.cend() and *lb == tile)
             m_tiles.erase(lb);
     }
 
-    auto begin(void) noexcept -> iterator
+    auto begin(void) noexcept
     {
         return m_tiles.begin();
     }
 
-    auto begin(void) const noexcept -> const_iterator
+    auto begin(void) const noexcept
     {
         return cbegin();
     }
 
-    auto cbegin(void) const noexcept -> const_iterator
+    auto cbegin(void) const noexcept
     {
         return m_tiles.cbegin();
     }
 
-    auto end(void) noexcept -> iterator
+    auto end(void) noexcept
     {
         return m_tiles.end();
     }
 
-    auto end(void) const noexcept -> const_iterator
+    auto end(void) const noexcept
     {
         return cend();
     }
 
-    auto cend(void) const noexcept -> const_iterator
+    auto cend(void) const noexcept
     {
         return m_tiles.cend();
     }
 
-    auto size(void) const noexcept -> size_type
+    auto size(void) const noexcept
     {
         return m_tiles.size();
     }
