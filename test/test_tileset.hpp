@@ -1,5 +1,5 @@
-#ifndef __NK_SPARROW_TEST_TILESET_H__
-#define __NK_SPARROW_TEST_TILESET_H__
+#ifndef __NK_SPARROW_TEST_TILESET_HPP__
+#define __NK_SPARROW_TEST_TILESET_HPP__
 
 #include <variant>
 

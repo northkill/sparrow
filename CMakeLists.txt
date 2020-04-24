@@ -30,6 +30,7 @@ IF (SPARROW_ENABLE_TEST)
     FIND_PACKAGE (Boost 1.72 REQUIRED COMPONENTS unit_test_framework)
     ADD_EXECUTABLE (
         sparrow-test
+        "./test/game_test.cpp"
         "./test/hand_test.cpp"
         "./test/test.cpp"
         "./test/tile_test.cpp"

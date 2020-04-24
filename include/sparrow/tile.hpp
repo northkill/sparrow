@@ -57,7 +57,7 @@ public:
         : m_value(value)
     { }
 
-    tile(tile const& other) noexcept
+    constexpr tile(tile const& other) noexcept
         : m_value(other.m_value)
     { }
 
