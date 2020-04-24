@@ -21,12 +21,6 @@ public:
 
     using value = std::variant< a, b, c >;
 
-    enum class suit {
-        a = value(a::one).index(),
-        b = value(b::one).index(),
-        c = value(c::one).index(),
-    };
-
     tileset(void) = delete;
 };
 

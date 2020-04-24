@@ -1,5 +1,5 @@
-#ifndef __NK_SPARROW_TILE_H__
-#define __NK_SPARROW_TILE_H__
+#ifndef __NK_SPARROW_TILE_HPP__
+#define __NK_SPARROW_TILE_HPP__
 
 #include <functional>
 
@@ -47,13 +47,13 @@ auto operator <= (tile< Tileset > const& a, tile< Tileset > const& b) noexcept -
 template < typename Tileset >
 class tile {
 public:
-    using tile_value_type = typename Tileset::value;
+    using value_type = typename Tileset::value;
 
     friend auto operator == < Tileset > (tile const& a, tile const& b) noexcept -> bool;
     friend auto operator < < Tileset > (tile const& a, tile const& b) noexcept -> bool;
     friend auto operator > < Tileset > (tile const& a, tile const& b) noexcept -> bool;
 
-    constexpr tile(tile_value_type const& value) noexcept
+    constexpr tile(value_type const& value) noexcept
         : m_value(value)
     { }
 
@@ -70,7 +70,7 @@ public:
     }
 
 private:
-    tile_value_type m_value;
+    value_type m_value;
 };
 
 template < typename Tileset >

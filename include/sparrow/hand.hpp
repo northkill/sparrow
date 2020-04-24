@@ -1,5 +1,5 @@
-#ifndef __NK_SPARROW_HAND_H__
-#define __NK_SPARROW_HAND_H__
+#ifndef __NK_SPARROW_HAND_HPP__
+#define __NK_SPARROW_HAND_HPP__
 
 #include <list>
 

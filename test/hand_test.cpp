@@ -3,7 +3,7 @@
 #include <boost/test/unit_test.hpp>
 #include <sparrow/hand.hpp>
 
-#include "./test_tileset.h"
+#include "./test_tileset.hpp"
 
 namespace spr = nk::sparrow;
 using tileset = spr::test::tileset;
